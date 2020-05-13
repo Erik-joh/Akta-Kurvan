@@ -1,0 +1,13 @@
+.canvas-wrapper {
+    width: 99vw;
+    height: 95vh;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-container{
+    display: flex;
+}
+
