@@ -5,26 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./src/styles/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
 </head>
 
 <body>
+    <div class="modal-wrapper">
+        <div class="modal-container">
+            <div class="select-players">
+                <div class="select-players-container">
+                    <h1>SELECT PLAYERS</h1>
+                </div>
+                <div class="select-players-container">
+                    <button data-id="1">One player</button>
+                    <button data-id="2">Two players</button>
+                    <button data-id="3">Three players</button>
+                    <button data-id="4">Four players</button>
+                    <button data-id="5">Five players</button>
+                </div>
+            </div>
+            <div class="show-players">
+
+            </div>
+        </div>
+    </div>
 
     <div class="canvas-wrapper">
         <div id="canvas-container"></div>
     </div>
-    <div class="button-container">
-        <button data-id="1">One player</button>
-        <button data-id="2">Two players</button>
-        <button data-id="3">Three players</button>
-        <button data-id="4">Four players</button>
-        <button data-id="5">Five players</button>
-        <button data-id="6">Six players</button>
-    </div>
-    <script src="./Classes/snake.js"></script>
-    <script src="./Classes/player.js"></script>
-    <script src="index.js"></script>
+    <div></div>
+
+
+
+
+    <script src="./src/Classes/snake.js"></script>
+    <script src="./src/Classes/player.js"></script>
+    <script src="./src/scripts/select.js"></script>
+    <script src="./src/scripts/index.js"></script>
+
 </body>
 
 </html>
