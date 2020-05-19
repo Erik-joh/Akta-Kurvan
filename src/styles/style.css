@@ -5,6 +5,8 @@ body{
 }
 
 .canvas-wrapper {
+    z-index: -1;
+    position: absolute;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -21,6 +23,7 @@ body{
 
 
 .modal-wrapper {
+    position: absolute;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -82,13 +85,6 @@ body{
     flex-direction: column;
 }
 
-.show-players > h1 {
-    font-style: normal;
-    font-size: 32px;
-    font-weight: 600;
-    color: #FFFFFF;
-}
-
 .show-players > button {
     display:inline-block;
     padding:0.3em 1.2em;
@@ -104,3 +100,28 @@ body{
     text-align:center;
     transition: all 0.2s;
 }
+
+.show-players-container {
+    height: 40px;
+    margin: 5px;
+    display: flex;
+}
+
+.show-players-container > h1 {
+    margin: 0px;
+    margin-right: 10px;
+    font-style: normal;
+    font-size: 32px;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+.show-players-container > input {
+    outline: none;
+    margin-right: 10px;
+}
+
+.show-players-container > input[type=text]:focus {
+    border: 3px solid #555;
+    background-color: lightblue;
+  }
