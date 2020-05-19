@@ -3,6 +3,7 @@ const intElemClientWidth = canvasContainer.clientWidth;
 const intElemClientHeight = canvasContainer.clientHeight;
 
 function setup() {
+  // noLoop();
 
   createCanvas(intElemClientWidth, intElemClientHeight).parent(
     "canvas-container"
@@ -13,20 +14,33 @@ function setup() {
 
 function draw() {
   if (started) {
-    player1.Update();
-    if (playerAmount > 1) {
-      player2.Update();
-    }
-    if (playerAmount > 2) {
-      player3.Update();
-    }
-    if (playerAmount > 3) {
-      player4.Update();
-    }
-    if (playerAmount > 4) {
-      player5.Update();
-    }
-    
+    for (let i = 0; i < playerAmount; i++) {
+      playersArray[i].Update();
+    }    
   }
 }
 
+// function startSketch(){
+//   const canvasContainer = document.getElementById("canvas-container");
+//   const intElemClientWidth = canvasContainer.clientWidth;
+//   const intElemClientHeight = canvasContainer.clientHeight;
+//   var sketch = function(p) {
+
+//     p.setup = function() {
+//       p.createCanvas(intElemClientWidth, intElemClientHeight).parent(
+//         "canvas-container"
+//       );
+//       p.background(255);
+//     };
+
+//     p.draw = function() {
+//       if (started) {
+//         for (let i = 0; i < playerAmount; i++) {
+//           playersArray[i].Update();
+//         }    
+//       }
+//     };
+//   };
+
+//   new p5(sketch);
+// }
