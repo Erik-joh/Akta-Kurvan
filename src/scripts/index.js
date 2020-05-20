@@ -8,15 +8,14 @@ function setup() {
   createCanvas(intElemClientWidth, intElemClientHeight).parent(
     "canvas-container"
   );
-  background(255);
-
+  background(1, 1, 1);
 }
 
 function draw() {
   if (started) {
     for (let i = 0; i < playerAmount; i++) {
       playersArray[i].Update();
-    }    
+    }
   }
 }
 
@@ -37,7 +36,7 @@ function draw() {
 //       if (started) {
 //         for (let i = 0; i < playerAmount; i++) {
 //           playersArray[i].Update();
-//         }    
+//         }
 //       }
 //     };
 //   };
