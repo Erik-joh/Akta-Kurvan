@@ -38,22 +38,22 @@ class Snake {
     let c2 = get(int(checkx2), int(checky2));
     let c3 = get(int(checkx3), int(checky3));
 
-    if (c1[0] !== 255 && c1[1] !== 255 && c1[2] !== 255) {
+    if (c1[0] !== 1 && c1[1] !== 1 && c1[2] !== 1) {
       this.collided = true;
       console.log("0");
     }
-    if (c2[0] !== 255 && c2[1] !== 255 && c2[2] !== 255) {
+    if (c2[0] !== 1 && c2[1] !== 1 && c2[2] !== 1) {
       this.collided = true;
       console.log("+90");
     }
-    if (c3[0] !== 255 && c3[1] !== 255 && c3[2] !== 255) {
+    if (c3[0] !== 1 && c3[1] !== 1 && c3[2] !== 1) {
       this.collided = true;
       console.log("-45");
     }
   }
   drawSnake() {
     if (!this.collided) {
-      fill(this.color);
+      fill(this.color[0], this.color[1], this.color[2]);
       noStroke();
       circle(this.body[0].x, this.body[0].y, this.d);
     }
