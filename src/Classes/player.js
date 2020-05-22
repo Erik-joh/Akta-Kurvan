@@ -5,7 +5,7 @@ class Player {
     this.color = color;
     this.startX = startX;
     this.startY = startY;
-    this.snake = new Snake(this.startX, this.startY, 20, this.color);
+    this.snake = new Snake(this.startX, this.startY, 10, this.color);
   }
   Update() {
     if (!this.snake.collided) {
