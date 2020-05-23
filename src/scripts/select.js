@@ -9,11 +9,11 @@ let playerAmount = "";
 let keysCode = [];
 let playersArray = [];
 const snakeColor = [
-  [255, 0, 0],
-  [0, 0, 255],
-  [0, 128, 0],
-  [255, 255, 0],
-  [255, 165, 0],
+  [255, 5, 5],
+  [5, 5, 255],
+  [5, 128, 5],
+  [255, 255, 5],
+  [255, 165, 5],
 ];
 
 let started = false;

@@ -8,7 +8,10 @@ function setup() {
   createCanvas(intElemClientWidth, intElemClientHeight).parent(
     "canvas-container"
   );
-  background(1, 1, 1);
+  background(255, 165, 5);
+  fill(1, 1, 1, 255);
+  translate(25, 25);
+  rect(0, 0, width - 50, height - 50);
 }
 
 function draw() {
@@ -16,6 +19,23 @@ function draw() {
     for (let i = 0; i < playerAmount; i++) {
       playersArray[i].Update();
     }
+    CheckWhoWon();
+  }
+}
+function CheckWhoWon() {
+  let collided = 0;
+
+  playersArray.forEach((player) => {
+    if (player.snake.collided) {
+      collided++;
+    }
+  });
+  if (collided == playersArray.length - 1) {
+    playersArray.forEach((player) => {
+      if (!player.snake.collided) {
+        noLoop();
+      }
+    });
   }
 }
 
