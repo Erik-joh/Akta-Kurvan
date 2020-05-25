@@ -45,7 +45,7 @@ function CheckWhoWon() {
     let winner = null;
     let someOneWon = false;
     playersArray.forEach((player) => {
-      if (player.score >= 2) {
+      if (player.score >= 10) {
         someOneWon = true;
         winner = player;
       }
