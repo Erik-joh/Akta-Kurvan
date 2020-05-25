@@ -1,5 +1,5 @@
 class Player {
-  constructor(keyL, keyR, color, startX, startY) {
+  constructor(keyL, keyR, color, startX, startY, name) {
     this.keyL = keyL;
     this.keyR = keyR;
     this.color = color;
@@ -7,6 +7,7 @@ class Player {
     this.startY = startY;
     this.snake = new Snake(this.startX, this.startY, 6, this.color);
     this.score = 0;
+    this.name = name; 
   }
   reset() {
     this.snake = new Snake(this.startX, this.startY, 6, this.color);
