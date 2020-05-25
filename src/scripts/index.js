@@ -42,15 +42,17 @@ function CheckWhoWon() {
 
     scoreBoardUpdate();
     started = false;
+    let winner = null;
     let someOneWon = false;
     playersArray.forEach((player) => {
-      if (player.score >= 10) {
+      if (player.score >= 2) {
         someOneWon = true;
+        winner = player;
       }
     });
     if (someOneWon) {
       setTimeout(() => {
-        finishedGame();
+        finishedGame(winner);
         setup();
       }, 1000);
     } else {
