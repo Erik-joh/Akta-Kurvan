@@ -5,11 +5,21 @@ class Player {
     this.color = color;
     this.startX = startX;
     this.startY = startY;
-    this.snake = new Snake(this.startX, this.startY, 6, this.color);
+    this.snake = new Snake(
+      this.startX + Math.random() * (canvasContainer.clientWidth - 200),
+      this.startY,
+      6,
+      this.color
+    );
     this.score = 0;
   }
   reset() {
-    this.snake = new Snake(this.startX, this.startY, 6, this.color);
+    this.snake = new Snake(
+      this.startX + Math.random() * (canvasContainer.clientWidth - 200),
+      this.startY,
+      6,
+      this.color
+    );
   }
   Update() {
     if (!this.snake.collided) {

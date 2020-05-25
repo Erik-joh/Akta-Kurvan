@@ -37,14 +37,27 @@ function CheckWhoWon() {
         player.score += collided.length;
       } else {
         player.score += collided.indexOf(player);
-      }      
+      }
     });
 
-    started = false;
     scoreBoardUpdate();
-    finishedGame();
-    clear();
-    setup();
-    draw();
+    started = false;
+    let someOneWon = false;
+    playersArray.forEach((player) => {
+      if (player.score >= 10) {
+        someOneWon = true;
+      }
+    });
+    if (someOneWon) {
+      setTimeout(() => {
+        finishedGame();
+        setup();
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        playAgain();
+        setup();
+      }, 1000);
+    }
   }
 }

@@ -23,7 +23,7 @@ const selectPlayersAmount = () => {
     button.addEventListener("click", () => {
       playerAmount = parseInt(button.dataset.id);
       removeElement(selectPlayers);
-      playersSelcetKeys();      
+      playersSelcetKeys();
     });
   });
 };
@@ -45,18 +45,18 @@ const playersSelcetKeys = () => {
     new Promise((resolve) =>
       window.addEventListener("keydown", resolve, { once: true })
     );
-  
+
   (async function () {
     for (let i = 0; i < playerAmount; i++) {
       let tempArrayHolder = [];
-      printOutHeader(i);      
+      printOutHeader(i);
       let x = await readKey();
       let y = await readKey();
       tempArrayHolder.push(x.keyCode);
       tempArrayHolder.push(y.keyCode);
       keysCode.push(tempArrayHolder);
       console.log(tempArrayHolder);
-      
+
       console.log(document.querySelector(".show-players-container"));
       document.querySelector(".show-players-container").remove();
     }
@@ -103,10 +103,10 @@ const createPlayers = () => {
 };
 
 const playAgain = () => {
-  started = true;
   playersArray.forEach((player) => {
     player.reset();
   });
+  started = true;
 };
 
 const newGame = () => {
@@ -115,6 +115,7 @@ const newGame = () => {
   keysCode = [];
   playersArray = [];
   scoreBoardReset();
+
   setTimeout(function () {
     removeClassCss(modalWrapper);
     removeClassCss(selectPlayers);
@@ -129,9 +130,6 @@ const finishedGame = () => {
       if (button.dataset.text === "meny") {
         removeElement(modalWrapperNewGame);
         newGame();
-      } else {
-        removeElement(modalWrapperNewGame);
-        playAgain();
       }
     });
   });

@@ -9,7 +9,7 @@ class Snake {
       createVector(x, y),
       createVector(x, y),
     ];
-    this.angle = Math.PI / 2;
+    this.angle = Math.random() * (Math.PI * 2);
     this.d = d;
     this.collided = false;
     this.color = color;
