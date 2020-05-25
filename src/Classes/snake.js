@@ -9,7 +9,6 @@ class Snake {
       createVector(x, y),
       createVector(x, y),
     ];
-    this.angles = [0, 0, 0, 0, 0, 0, 0];
     this.angle = Math.PI / 2;
     this.d = d;
     this.collided = false;
@@ -22,14 +21,12 @@ class Snake {
   updateSnake() {
     if (!this.collided) {
       let head = this.body[0];
-      this.angles[0] = this.angle;
       for (let i = this.body.length - 1; i > 0; i--) {
-        this.angles[i] = this.angles[i - 1];
         this.body[i].x = this.body[i - 1].x;
         this.body[i].y = this.body[i - 1].y;
       }
-      head.x = head.x + 2 * Math.sin(this.angle);
-      head.y = head.y + 2 * Math.cos(this.angle);
+      head.x = head.x + 1.5 * Math.sin(this.angle);
+      head.y = head.y + 1.5 * Math.cos(this.angle);
     }
   }
   keyEvent(keyL, keyR) {
@@ -62,7 +59,7 @@ class Snake {
     });
   }
   drawSnake() {
-    if (!this.collided && this.frameCounter < 95) {
+    if (!this.collided && this.frameCounter < 110) {
       fill(this.color[0], this.color[1], this.color[2]);
       noStroke();
       circle(this.body[0].x, this.body[0].y, this.d);
@@ -73,18 +70,7 @@ class Snake {
 
       fill(255, 255, 255, 255);
 
-      // push();
-      // rectMode(CENTER);
       fill(2, 2, 2, 255);
-      // translate(
-      //   this.body[this.body.length - 1].x,
-      //   this.body[this.body.length - 1].y
-      // );
-      // rotate(this.angles[this.angles.length - 1] + Math.PI / 2);
-
-      // square(0, 0, this.d);
-      // pop();
-      // //this.body[this.body.length - 1].x - this.d / 2
 
       circle(
         this.body[this.body.length - 1].x,

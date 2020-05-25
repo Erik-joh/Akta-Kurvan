@@ -5,11 +5,9 @@ const selectPlayers = document.querySelector(".select-players");
 const playerButtons = document.querySelectorAll(
   ".select-players-container > button"
 );
-const newGameButtons = document.querySelectorAll(
-  ".select-new-game > button"
-);
+const newGameButtons = document.querySelectorAll(".select-new-game > button");
 let started = false;
-let playerAmount = "";
+let playerAmount = 0;
 let keysCode = [];
 let playersArray = [];
 const snakeColor = [
@@ -22,13 +20,13 @@ const snakeColor = [
 
 const selectPlayersAmount = () => {
   playerButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-          playerAmount = parseInt(button.dataset.id);
-          removeElement(selectPlayers);
-          playersSelcetKeys();
-      });
+    button.addEventListener("click", () => {
+      playerAmount = parseInt(button.dataset.id);
+      removeElement(selectPlayers);
+      playersSelcetKeys();
+    });
   });
-}
+};
 selectPlayersAmount();
 
 const printOutHeader = (count) => {
@@ -60,7 +58,6 @@ const playersSelcetKeys = () => {
       document.querySelector(".show-players-container").remove();
     }
 
-    
     const buttonTemplate = `
     <button>Start Game</button>
     `;
@@ -85,7 +82,7 @@ const removeElement = (element) => {
 
 const removeClassCss = (element) => {
   element.classList.remove("hidden");
-}
+};
 
 const createPlayers = () => {
   for (let i = 0; i < playerAmount; i++) {
@@ -99,43 +96,41 @@ const createPlayers = () => {
     playersArray.push(player);
   }
   started = true;
+  scoreBoard();
 };
 
 const playAgain = () => {
-
-  started = false; //denna kanske ska placerar tidigare 
-  playersArray = [];
-  createPlayers();
-
-}
+  started = true;
+  playersArray.forEach((player) => {
+    player.reset();
+  });
+};
 
 const newGame = () => {
   started = false;
-  playerAmount = "";
+  playerAmount = 0;
   keysCode = [];
   playersArray = [];
-
+  scoreBoardReset();
   setTimeout(function () {
-      removeClassCss(modalWrapper);
-      removeClassCss(selectPlayers);
-      selectPlayersAmount();      
+    removeClassCss(modalWrapper);
+    removeClassCss(selectPlayers);
+    selectPlayersAmount();
   }, 200);
-  
-}
+};
 
 const finishedGame = () => {
   removeClassCss(modalWrapperNewGame);
 
   newGameButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-          if (button.dataset.text === "meny") {
-              removeElement(modalWrapperNewGame);
-              newGame();
-
-          } else {
-              removeElement(modalWrapperNewGame);
-              playAgain(); 
-          }
-      });
+    button.addEventListener("click", () => {
+      if (button.dataset.text === "meny") {
+        removeElement(modalWrapperNewGame);
+        newGame();
+      } else {
+        removeElement(modalWrapperNewGame);
+        playAgain();
+      }
+    });
   });
-}
+};
