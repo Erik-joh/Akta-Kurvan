@@ -37,7 +37,7 @@ function CheckWhoWon() {
         player.score += collided.length;
       } else {
         player.score += collided.indexOf(player);
-      }
+      }      
     });
 
     started = false;
