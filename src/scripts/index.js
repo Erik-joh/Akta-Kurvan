@@ -3,14 +3,13 @@ const intElemClientWidth = canvasContainer.clientWidth;
 const intElemClientHeight = canvasContainer.clientHeight;
 
 function setup() {
-
   createCanvas(intElemClientWidth, intElemClientHeight).parent(
     "canvas-container"
   );
   background(255, 165, 5);
   fill(1, 1, 1, 255);
-  translate(25, 25);
-  rect(0, 0, width - 50, height - 50);
+  translate(10, 10);
+  rect(0, 0, width - 20, height - 20);
 }
 
 function draw() {
@@ -22,24 +21,30 @@ function draw() {
   }
 }
 function CheckWhoWon() {
-  let collided = 0;
+  let collided = [];
 
   playersArray.forEach((player) => {
     if (player.snake.collided) {
-      collided++;
+      if (!collided.includes(player)) {
+        collided.push(player);
+      }
     }
   });
-  if (collided == playersArray.length - 1) {
+
+  if (collided.length >= playersArray.length - 1) {
+    playersArray.forEach((player) => {
+      if (!player.snake.collided) {
+        player.score += collided.length;
+      } else {
+        player.score += collided.indexOf(player);
+      }
+    });
+
+    started = false;
+    scoreBoardUpdate();
     finishedGame();
     clear();
     setup();
     draw();
-    playersArray.forEach((player) => {
-      if (!player.snake.collided) {
-        noLoop();
-      }
-    });
   }
 }
-
-
