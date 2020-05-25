@@ -48,8 +48,8 @@ $ git clone https://github.com/Erik-joh/Akta-Kurvan
 - Alice Holmberg
 - Edwin Haddadian
 - Viktor Hallman
--
--
+- Group 12 : Dominic Kersch and Jesper Lundqvist
+- Group 02 : Mikaela Lundsgård and Alexander Gustafsson Flink
 
 ## Code review
 
