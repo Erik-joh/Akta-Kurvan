@@ -10,7 +10,9 @@ function scoreBoard() {
 }
 function scoreBoardUpdate() {
   for (let i = 0; i < playersArray.length; i++) {
-    scoreContainer.children[i].innerHTML =  `${player.name}: ${playersArray[i].score}`;
+    scoreContainer.children[
+      i
+    ].innerHTML = `${playersArray[i].name}: ${playersArray[i].score}`;
   }
 }
 function scoreBoardReset() {

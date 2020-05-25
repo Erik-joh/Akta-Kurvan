@@ -24,7 +24,7 @@ const selectPlayersAmount = () => {
     button.addEventListener("click", () => {
       playerAmount = parseInt(button.dataset.id);
       removeElement(selectPlayers);
-      playersSelcetName();    
+      playersSelcetName();
     });
   });
 };
@@ -38,7 +38,7 @@ const printOutTextForSelectName = (count) => {
   </div>
   `;
   document.querySelector(".show-players-container").innerHTML += template;
-}
+};
 
 const playersSelcetName = () => {
   const template = `<div class="show-players-container"></div>`;
@@ -52,31 +52,29 @@ const playersSelcetName = () => {
   `;
 
   document.querySelector(".show-players-container").innerHTML += buttonTemplate;
-  
+
   document
-  .querySelector(".show-players-container > button")
-  .addEventListener("click", () => {
-    const inputs = document.querySelectorAll('input');
-    let x = 0; 
-    inputs.forEach( input => {
-      x++;
-      let name = input.value.trim();
-      if (name === "") {
-       name = `Player ${x}`;
-      }
-      playersNameArray.push(name.toUpperCase());
+    .querySelector(".show-players-container > button")
+    .addEventListener("click", () => {
+      const inputs = document.querySelectorAll("input");
+      let x = 0;
+      inputs.forEach((input) => {
+        x++;
+        let name = input.value.trim();
+        if (name === "") {
+          name = `Player ${x}`;
+        }
+        playersNameArray.push(name.toUpperCase());
+      });
+      document.querySelector(".show-players-container").remove();
+      playersSelcetKeys();
     });
-    document.querySelector(".show-players-container").remove();
-    playersSelcetKeys(); 
-  });
-}
+};
 
 const printOutTextForSelectKeys = (count) => {
   const template = `
     <div class="show-players-container">
-    <h1 style="color:rgb(${snakeColor[count][0]},${snakeColor[count][1]},${
-    snakeColor[count][2]
-  });" >${playersNameArray[count]} SELECT TWO KEYS</h1>
+    <h1 style="color:rgb(${snakeColor[count][0]},${snakeColor[count][1]},${snakeColor[count][2]});" >${playersNameArray[count]} SELECT TWO KEYS</h1>
     </div>
     `;
   showPlayersWrapper.innerHTML = template;
@@ -92,7 +90,7 @@ const playersSelcetKeys = () => {
     for (let i = 0; i < playerAmount; i++) {
       let tempArrayHolder = [];
 
-      printOutTextForSelectKeys(i);      
+      printOutTextForSelectKeys(i);
 
       let x = await readKey();
       let y = await readKey();
@@ -137,7 +135,7 @@ const createPlayers = () => {
       snakeColor[i],
       100,
       100 * (i + 1),
-      playersNameArray[i],
+      playersNameArray[i]
     );
     playersArray.push(player);
   }
@@ -157,6 +155,7 @@ const newGame = () => {
   playerAmount = 0;
   keysCode = [];
   playersArray = [];
+  playersNameArray = [];
   scoreBoardReset();
 
   setTimeout(function () {
@@ -165,9 +164,11 @@ const newGame = () => {
   }, 200);
 };
 
-const finishedGame = () => {
+const finishedGame = (player) => {
   removeClassCss(modalWrapperNewGame);
-
+  let winner = document.querySelector(".winner");
+  winner.style.color = `rgb(${player.color[0]}, ${player.color[1]}, ${player.color[2]})`;
+  winner.innerHTML = `The winner is ${player.name}!`;
   newGameButtons.forEach((button) => {
     button.addEventListener("click", () => {
       if (button.dataset.text === "meny") {
