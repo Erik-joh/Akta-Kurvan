@@ -4,13 +4,13 @@ function scoreBoard() {
     let p = document.createElement("p");
     p.classList.add("score");
     p.style.color = `rgb(${player.color[0]}, ${player.color[1]}, ${player.color[2]})`;
-    p.innerHTML = player.score;
+    p.innerHTML = `${player.name}: ${player.score}`;
     scoreContainer.appendChild(p);
   });
 }
 function scoreBoardUpdate() {
   for (let i = 0; i < playersArray.length; i++) {
-    scoreContainer.children[i].innerHTML = playersArray[i].score;
+    scoreContainer.children[i].innerHTML =  `${player.name}: ${playersArray[i].score}`;
   }
 }
 function scoreBoardReset() {

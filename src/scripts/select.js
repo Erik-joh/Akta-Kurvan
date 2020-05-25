@@ -10,6 +10,7 @@ let started = false;
 let playerAmount = 0;
 let keysCode = [];
 let playersArray = [];
+let playersNameArray = [];
 const snakeColor = [
   [255, 5, 5],
   [5, 5, 255],
@@ -23,18 +24,59 @@ const selectPlayersAmount = () => {
     button.addEventListener("click", () => {
       playerAmount = parseInt(button.dataset.id);
       removeElement(selectPlayers);
-      playersSelcetKeys();      
+      playersSelcetName();    
     });
   });
 };
 selectPlayersAmount();
 
-const printOutHeader = (count) => {
+const printOutTextForSelectName = (count) => {
+  const template = `
+  <div>
+  <label for="name">Player ${count + 1} select your name:</label><br>
+  <input type="text" name="name"><br>
+  </div>
+  `;
+  document.querySelector(".show-players-container").innerHTML += template;
+}
+
+const playersSelcetName = () => {
+  const template = `<div class="show-players-container"></div>`;
+  showPlayersWrapper.innerHTML = template;
+
+  for (let i = 0; i < playerAmount; i++) {
+    printOutTextForSelectName(i);
+  }
+  const buttonTemplate = `
+  <button>Continue</button>
+  `;
+
+  document.querySelector(".show-players-container").innerHTML += buttonTemplate;
+  
+  document
+  .querySelector(".show-players-container > button")
+  .addEventListener("click", () => {
+    const inputs = document.querySelectorAll('input');
+    let x = 0; 
+    inputs.forEach( input => {
+      x++;
+      let name = input.value.trim();
+      if (name === "") {
+       name = `Player ${x}`;
+      }
+      playersNameArray.push(name.toUpperCase());
+    });
+    document.querySelector(".show-players-container").remove();
+    playersSelcetKeys(); 
+  });
+}
+
+const printOutTextForSelectKeys = (count) => {
   const template = `
     <div class="show-players-container">
     <h1 style="color:rgb(${snakeColor[count][0]},${snakeColor[count][1]},${
     snakeColor[count][2]
-  });" >PLAYER ${count + 1} SELECT TWO KEYS</h1>
+  });" >${playersNameArray[count]} SELECT TWO KEYS</h1>
     </div>
     `;
   showPlayersWrapper.innerHTML = template;
@@ -49,15 +91,12 @@ const playersSelcetKeys = () => {
   (async function () {
     for (let i = 0; i < playerAmount; i++) {
       let tempArrayHolder = [];
-      printOutHeader(i);      
+      printOutTextForSelectKeys(i);      
       let x = await readKey();
       let y = await readKey();
       tempArrayHolder.push(x.keyCode);
       tempArrayHolder.push(y.keyCode);
       keysCode.push(tempArrayHolder);
-      console.log(tempArrayHolder);
-      
-      console.log(document.querySelector(".show-players-container"));
       document.querySelector(".show-players-container").remove();
     }
 
@@ -94,7 +133,8 @@ const createPlayers = () => {
       keysCode[i][1],
       snakeColor[i],
       100,
-      100 * (i + 1)
+      100 * (i + 1),
+      playersNameArray[i],
     );
     playersArray.push(player);
   }
